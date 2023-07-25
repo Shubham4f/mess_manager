@@ -1,0 +1,40 @@
+<div class="card mx-auto mt-2" style="max-width: fit-content;">
+  <h5 class="card-header">Search :</h5>
+  <div class="card-body text-center">
+    <form action="/bill" method="post">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="cname" name="cname" required value = {{name}} >
+        </div>
+        <button type="submit" class="btn btn-primary">Search <i class="bi bi-search"></i></button>
+    </form>
+  </div>
+</div>
+
+
+ 
+ 
+ <div class="card mx-auto mt-5" style="max-width: 80%;">
+  <h5 class="card-header d-flex justify-content-between">Pending Bill <div>{{#if name}}Search : {{name}}{{/if}}</div></h5>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Name</th>
+          <th class="text-center" scope="col">Start Date</th>
+          <th class="text-center" scope="col">End Date</th>
+          <th class="text-center" scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each rows}}
+          <tr>
+            <td class="text-center">{{this.cname}}</td>
+            <td class="text-center">{{this.mstart}}</td>
+            <td class="text-center">{{this.mend}}</td>
+            <td class="text-center"><a href="/bill/{{this.bid}}" type="button" class="btn btn-light btn-small"><i class="bi bi-eye-fill"></i></a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

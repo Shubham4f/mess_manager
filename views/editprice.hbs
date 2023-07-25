@@ -1,0 +1,51 @@
+{{#if error }}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
+{{/if}}
+
+{{#each rows}}
+<div class="card mx-auto mt-5" style="max-width: 600px;">
+  <h5 class="card-header">Edit Pricing Category</h5>
+    <div class="card-body">
+      <form action="/editprice" method="post">
+      <div class="mb-3" style="max-width: 250px; display: none;">
+          <label for="pid" class="form-label">Id : </label>
+          <input type="number" class="form-control" id="pid" name="pid" value="{{this.pid}}" required>
+        </div>
+        <div class="mb-3">
+          <label for="pname" class="form-label">Category Name : </label>
+          <input type="text" class="form-control" id="pname" name="pname" value="{{this.pname}}" required>
+        </div>
+        <div class="input mb-3">
+          <label for="pbreakfast" class="form-label">Breakfast Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="pbreakfast" name="pbreakfast" value="{{this.pbreakfast}}" step="0.001" required>
+          </div>
+        </div>
+        <div class="input mb-3">
+          <label for="plunch" class="form-label">Lunch Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="plunch" name="plunch" value="{{this.plunch}}" step="0.001" required>
+          </div>
+        </div>
+        <div class="input mb-3">
+          <label for="pdinner" class="form-label">Dinner Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="pdinner" name="pdinner" value="{{this.pdinner}}" step="0.001" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update <i class="bi bi-pencil"></i></button>
+      </form>
+  </div>
+</div>
+{{/each}}
