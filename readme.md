@@ -2,12 +2,13 @@
 
 Mess Manager is a web application designed to streamline mess billing and meal tracking for customers. The system automates billing processes, generates bills for each customer in 30-day cycles, and ensures efficient data management through CRUD operations.
 ## Technologies Used
-
-<img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap Logo" height="50" style="margin-right: 20px;">
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" height="50" style="margin-right: 20px;">
-<img src="https://expressjs.com/images/express-facebook-share.png" alt="Express Logo" height="50" style="margin-right: 20px;">
-<img src="https://handlebarsjs.com/images/handlebars_logo.png" alt="Express Handlebars Logo" height="50" style="margin-right: 20px;">
-<img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL Logo" height="50">
+<p align="left">
+  <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap Logo" height="50" style="margin-right: 20px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" height="50" style="margin-right: 20px;">
+  <img src="https://expressjs.com/images/express-facebook-share.png" alt="Express Logo" height="50" style="margin-right: 20px;">
+  <img src="https://handlebarsjs.com/images/handlebars_logo.png" alt="Express Handlebars Logo" height="50" style="margin-right: 20px;">
+  <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL Logo" height="50">
+<p>
 
 - **Bootstrap:** Front-end framework for responsive and visually appealing design.
 - **Node.js:** Server-side JavaScript runtime.
