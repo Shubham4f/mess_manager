@@ -3,18 +3,10 @@
     <h5 class="card-header">Change Date</h5>
     <div class="card-body text-center">
       <form action="/" method="post">
-        <div class="mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="d"
-            name="d"
-            value={{date}}
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Go
-          <i class="bi bi-calendar-check"></i></button>
+          <div class="mb-3">
+            <input type="date" class="form-control" id="d" name="d" value={{date}} required>
+          </div>
+          <button type="submit" class="btn btn-primary">Go <i class="bi bi-calendar-check"></i></button>
       </form>
     </div>
   </div>
@@ -23,49 +15,30 @@
     <h5 class="card-header">Search :</h5>
     <div class="card-body text-center">
       <form action="/" method="post">
-        <div class="mb-3">
-          <input
-            type="date"
-            class="form-control d-none"
-            id="d"
-            name="d"
-            value={{date}}
-            required
-          />
-          <input
-            type="text"
-            class="form-control"
-            id="cname"
-            name="cname"
-            required
-            value={{name}}
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Search
-          <i class="bi bi-search"></i></button>
+          <div class="mb-3">
+            <input type="date" class="form-control d-none" id="d" name="d" value={{date}} required>
+            <input type="text" class="form-control" id="cname" name="cname" required value = {{name}} >
+          </div>
+          <button type="submit" class="btn btn-primary">Search <i class="bi bi-search"></i></button>
       </form>
     </div>
   </div>
 </div>
 
 {{#if success}}
-  <div class="alert alert-success" role="alert">
-    {{success}}
-  </div>
+<div class="alert alert-success" role="alert">
+  {{success}}
+</div>
 {{/if}}
-{{#if error}}
-  <div class="alert alert-warning" role="alert">
-    {{error}}
-  </div>
+{{#if error }}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
 {{/if}}
 
+
 <div class="card mx-auto mt-5 ms-2 me-2">
-  <h5 class="card-header d-flex justify-content-between">{{#unless
-      name
-    }}All{{/unless}}
-    Customers -
-    {{tc}}
-    <div>{{#if name}}Search : {{name}}{{/if}}</div></h5>
+  <h5 class="card-header d-flex justify-content-between">{{#unless name}}All{{/unless}} Customers - {{tc}} <div>{{#if name}}Search : {{name}}{{/if}}</div></h5>
   <div class="card-body">
     <table class="table table-hover">
       <thead>
@@ -90,374 +63,193 @@
             <td class="text-center">
               {{#if this.pbreakfast}}
                 {{#if this.b}}
-                  <a
-                    href="/{{this.cid}}/b/0/{{this.date}}"
-                    type="button"
-                    class="btn btn-success btn-small"
-                  >On</a>
+                  <a href="/{{this.cid}}/b/0/{{this.date}}" type="button" class="btn btn-success btn-small">On</a>
                 {{/if}}
                 {{#unless this.b}}
-                  <a
-                    href="/{{this.cid}}/b/1/{{this.date}}"
-                    type="button"
-                    class="btn btn-danger btn-small"
-                  >Off</a>
+                  <a href="/{{this.cid}}/b/1/{{this.date}}" type="button" class="btn btn-danger btn-small">Off</a>
                 {{/unless}}
               {{/if}}
               {{#unless this.pbreakfast}}
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-small"
-                  disabled
-                ><i class="bi bi-x-circle"></i></button>
+              <button type="button" class="btn btn-secondary btn-small" disabled><i class="bi bi-x-circle"></i></button>
               {{/unless}}
             </td>
             <td class="text-center">
               {{#if this.plunch}}
                 {{#if this.l}}
-                  <a
-                    href="/{{this.cid}}/l/0/{{this.date}}"
-                    type="button"
-                    class="btn btn-success btn-small"
-                  >On</a>
+                  <a href="/{{this.cid}}/l/0/{{this.date}}" type="button" class="btn btn-success btn-small">On</a>
                 {{/if}}
                 {{#unless this.l}}
-                  <a
-                    href="/{{this.cid}}/l/1/{{this.date}}"
-                    type="button"
-                    class="btn btn-danger btn-small"
-                  >Off</a>
+                  <a href="/{{this.cid}}/l/1/{{this.date}}" type="button" class="btn btn-danger btn-small">Off</a>
                 {{/unless}}
               {{/if}}
               {{#unless this.plunch}}
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-small"
-                  disabled
-                ><i class="bi bi-x-circle"></i></button>
+              <button type="button" class="btn btn-secondary btn-small" disabled><i class="bi bi-x-circle"></i></button>
               {{/unless}}
             </td>
             <td class="text-center">
               {{#if this.pdinner}}
-                {{#if this.d}}
-                  <a
-                    href="/{{this.cid}}/d/0/{{this.date}}"
-                    type="button"
-                    class="btn btn-success btn-small"
-                  >On</a>
+                {{#if this.d}} 
+                  <a href="/{{this.cid}}/d/0/{{this.date}}" type="button" class="btn btn-success btn-small">On</a>
                 {{/if}}
                 {{#unless this.d}}
-                  <a
-                    href="/{{this.cid}}/d/1/{{this.date}}"
-                    type="button"
-                    class="btn btn-danger btn-small"
-                  >Off</a>
+                  <a href="/{{this.cid}}/d/1/{{this.date}}" type="button" class="btn btn-danger btn-small">Off</a>
                 {{/unless}}
               {{/if}}
               {{#unless this.pdinner}}
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-small"
-                  disabled
-                ><i class="bi bi-x-circle"></i></button>
+              <button type="button" class="btn btn-secondary btn-small" disabled><i class="bi bi-x-circle"></i></button>
               {{/unless}}
             </td>
             <td class="text-center">
-              <a
-                href="/{{this.cid}}/a/0/{{this.date}}"
-                type="button"
-                class="btn btn-warning"
-              ><i class="bi bi-x-square-fill"></i></a>
+              <a href="/{{this.cid}}/a/0/{{this.date}}" type="button" class="btn btn-warning"><i class="bi bi-x-square-fill"></i></a>
             </td>
             <td class="text-center">{{this.mstart}}</td>
             <td class="text-center">{{this.mend}}</td>
             <td class="text-center">{{this.pname}}</td>
-            <td class="text-center"><a
-                href="/editcustomer/{{this.cid}}"
-                type="button"
-                class="btn btn-light btn-small"
-              ><i class="bi bi-pencil"></i></a></td>
+            <td class="text-center"><a href="/editcustomer/{{this.cid}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i></a></td>
           </tr>
         {{/each}}
         {{#unless name}}
-          <tr>
-            <td></td>
-            <th scope="col" class="text-center">ALL OFF</th>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#boff"
-              ><i class="bi bi-x-square-fill"></i></button></td>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#loff"
-              ><i class="bi bi-x-square-fill"></i></button></td>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#doff"
-              ><i class="bi bi-x-square-fill"></i></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <th scope="col" class="text-center">ALL ON</th>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-info"
-                data-bs-toggle="modal"
-                data-bs-target="#bon"
-              ><i class="bi bi-check-square-fill"></i></button></td>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-info"
-                data-bs-toggle="modal"
-                data-bs-target="#lon"
-              ><i class="bi bi-check-square-fill"></i></button></td>
-            <td class="text-center"><button
-                type="button"
-                class="btn btn-info"
-                data-bs-toggle="modal"
-                data-bs-target="#don"
-              ><i class="bi bi-check-square-fill"></i></button></td>
-          </tr>
+        <tr>
+          <td></td>
+          <th scope="col" class="text-center">ALL OFF</th>
+          <td class="text-center"><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#boff"><i class="bi bi-x-square-fill"></i></button></td>
+          <td class="text-center"><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loff"><i class="bi bi-x-square-fill"></i></button></td>
+          <td class="text-center"><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#doff"><i class="bi bi-x-square-fill"></i></button></td>
+        </tr>
+        <tr>
+          <td></td>
+          <th scope="col" class="text-center">ALL ON</th>
+          <td class="text-center"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#bon"><i class="bi bi-check-square-fill"></i></button></td>
+          <td class="text-center"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#lon"><i class="bi bi-check-square-fill"></i></button></td>
+          <td class="text-center"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#don"><i class="bi bi-check-square-fill"></i></button></td>
+        </tr>
         {{/unless}}
       </tbody>
     </table>
   </div>
 </div>
 
+
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="boff"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="boffLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="boff" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="boffLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="boffLabel">Breakfast Off</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn off breakfast</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn off breakfast</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/b/0/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="loff"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="loffLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="loff" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loffLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="loffLabel">Lunch Off</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn off lunch</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn off lunch</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/l/0/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="doff"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="doffLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="doff" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="doffLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="doffLabel">Dinner Off</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn off dinner</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn off dinner</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/d/0/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="bon"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="bonLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="bon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="bonLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="bonLabel">Breakfast On</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn on breakfast</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn on breakfast</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/b/1/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="lon"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="lonLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="lon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="lonLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="lonLabel">Lunch On</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn on lunch</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn on lunch</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/l/1/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="don"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="donLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="don" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="donLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="donLabel">Dinner On</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        For
-        <b>{{date1}}</b>, do you wish to
-        <b>turn on dinner</b>
-        for all?
+        For <b>{{date1}}</b>, do you wish to <b>turn on dinner</b> for all?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="/d/1/{{date}}" type="button" class="btn btn-primary">Yes</a>
       </div>
     </div>

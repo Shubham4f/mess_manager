@@ -1,12 +1,12 @@
 {{#if success}}
-  <div class="alert alert-success" role="alert">
-    {{success}}
-  </div>
+<div class="alert alert-success" role="alert">
+  {{success}}
+</div>
 {{/if}}
-{{#if error}}
-  <div class="alert alert-warning" role="alert">
-    {{error}}
-  </div>
+{{#if error }}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
 {{/if}}
 
 <div class="card mx-auto mt-5" style="max-width: 80%;">
@@ -29,11 +29,7 @@
             <td class="text-center">{{this.pbreakfast}}</td>
             <td class="text-center">{{this.plunch}}</td>
             <td class="text-center">{{this.pdinner}}</td>
-            <td class="text-center"><a
-                href="/editprice/{{this.pid}}"
-                type="button"
-                class="btn btn-light btn-small"
-              ><i class="bi bi-pencil"></i></a></td>
+            <td class="text-center"><a href="/editprice/{{this.pid}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i></a></td>
           </tr>
         {{/each}}
       </tbody>
@@ -43,178 +39,40 @@
 
 <div class="card mx-auto mt-5" style="max-width: 600px;">
   <h5 class="card-header">Add New Pricing Category</h5>
-  <div class="card-body">
-    <form action="/price" method="post">
-      <div class="mb-3">
-        <label for="pname" class="form-label">Category Name : </label>
-        <input
-          type="text"
-          class="form-control"
-          id="pname"
-          name="pname"
-          required
-        />
-      </div>
-      <div class="input mb-3">
-        <label for="pbreakfast" class="form-label">Breakfast Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
-          </div>
-          <input
-            type="number"
-            class="form-control"
-            id="pbreakfast"
-            name="pbreakfast"
-            step="0.001"
-            required
-          />
+    <div class="card-body">
+      <form action="/price" method="post">
+        <div class="mb-3">
+          <label for="pname" class="form-label">Category Name : </label>
+          <input type="text" class="form-control" id="pname" name="pname" required>
         </div>
-      </div>
-      <div class="input mb-3">
-        <label for="plunch" class="form-label">Lunch Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
+        <div class="input mb-3">
+          <label for="pbreakfast" class="form-label">Breakfast Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="pbreakfast" name="pbreakfast" step="0.001" required>
           </div>
-          <input
-            type="number"
-            class="form-control"
-            id="plunch"
-            name="plunch"
-            step="0.001"
-            required
-          />
         </div>
-      </div>
-      <div class="input mb-3">
-        <label for="pdinner" class="form-label">Dinner Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
+        <div class="input mb-3">
+          <label for="plunch" class="form-label">Lunch Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="plunch" name="plunch" step="0.001" required>
           </div>
-          <input
-            type="number"
-            class="form-control"
-            id="pdinner"
-            name="pdinner"
-            step="0.001"
-            required
-          />
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Add
-        <i class="bi bi-plus-circle"></i></button>
-    </form>
-  </div>
-</div>
-{{#if success}}
-  <div class="alert alert-success" role="alert">
-    {{success}}
-  </div>
-{{/if}}
-{{#if error}}
-  <div class="alert alert-warning" role="alert">
-    {{error}}
-  </div>
-{{/if}}
-
-<div class="card mx-auto mt-5" style="max-width: 80%;">
-  <h5 class="card-header">All Pricing Category</h5>
-  <div class="card-body">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th class="text-center" scope="col">Name</th>
-          <th class="text-center" scope="col">Breakfast</th>
-          <th class="text-center" scope="col">Lunch</th>
-          <th class="text-center" scope="col">Dinner</th>
-          <th class="text-center" scope="col">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each rows}}
-          <tr>
-            <td class="text-center">{{this.pname}}</td>
-            <td class="text-center">{{this.pbreakfast}}</td>
-            <td class="text-center">{{this.plunch}}</td>
-            <td class="text-center">{{this.pdinner}}</td>
-            <td class="text-center"><a
-                href="/editprice/{{this.pid}}"
-                type="button"
-                class="btn btn-light btn-small"
-              ><i class="bi bi-pencil"></i></a></td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="card mx-auto mt-5" style="max-width: 600px;">
-  <h5 class="card-header">Add New Pricing Category</h5>
-  <div class="card-body">
-    <form action="/price" method="post">
-      <div class="mb-3">
-        <label for="pname" class="form-label">Category Name : </label>
-        <input
-          type="text"
-          class="form-control"
-          id="pname"
-          name="pname"
-          required
-        />
-      </div>
-      <div class="input mb-3">
-        <label for="pbreakfast" class="form-label">Breakfast Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
+        <div class="input mb-3">
+          <label for="pdinner" class="form-label">Dinner Price : </label>
+          <div class="input-group" style="max-width: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Rs.</span>
+            </div>
+            <input type="number" class="form-control" id="pdinner" name="pdinner" step="0.001" required>
           </div>
-          <input
-            type="number"
-            class="form-control"
-            id="pbreakfast"
-            name="pbreakfast"
-            step="0.001"
-            required
-          />
         </div>
-      </div>
-      <div class="input mb-3">
-        <label for="plunch" class="form-label">Lunch Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
-          </div>
-          <input
-            type="number"
-            class="form-control"
-            id="plunch"
-            name="plunch"
-            step="0.001"
-            required
-          />
-        </div>
-      </div>
-      <div class="input mb-3">
-        <label for="pdinner" class="form-label">Dinner Price : </label>
-        <div class="input-group" style="max-width: 250px;">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Rs.</span>
-          </div>
-          <input
-            type="number"
-            class="form-control"
-            id="pdinner"
-            name="pdinner"
-            step="0.001"
-            required
-          />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Add
-        <i class="bi bi-plus-circle"></i></button>
-    </form>
+        <button type="submit" class="btn btn-primary">Add <i class="bi bi-plus-circle"></i></button>
+      </form>
   </div>
 </div>
