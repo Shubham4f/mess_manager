@@ -1,0 +1,102 @@
+<div class="card mx-auto mt-2" style="max-width: fit-content;">
+  <h5 class="card-header">Search :</h5>
+  <div class="card-body text-center">
+    <form action="/bill" method="post">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="cname"
+          name="cname"
+          required
+          value={{name}}
+        >
+      </div>
+      <button type="submit" class="btn btn-primary">Search
+        <i class="bi bi-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="card mx-auto mt-5" style="max-width: 80%;">
+  <h5 class="card-header d-flex justify-content-between">Pending Bill
+    <div>{{#if name}}Search : {{name}}{{/if}}</div>
+    <div><button class="btn btn-danger" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deletePopUp" disabled>Delete</button></div></h5>
+  <div class="card-body">
+    <form method="post" action="/deletemultibill" id="dmb">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Name</th>
+            <th class="text-center" scope="col">Start Date</th>
+            <th class="text-center" scope="col">End Date</th>
+            <th class="text-center" scope="col">View</th>
+            <th class="text-center" scope="col"><div>ALL  <input id="all" onclick="selectAll()" class="form-check-input" type="checkbox"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each rows}}
+            <tr>
+              <td class="text-center">{{this.cname}}</td>
+              <td class="text-center">{{this.mstart}}</td>
+              <td class="text-center">{{this.mend}}</td>
+              <td class="text-center"><a
+                  href="/bill/{{this.bid}}"
+                  type="button"
+                  class="btn btn-light btn-small"
+                ><i class="bi bi-eye-fill"></i></a></td>
+              <td class="text-center">
+                <input
+                  class="form-check-input"
+                  onclick="selectedBills()"
+                  type="checkbox"
+                  name="billIds"
+                  id="{{this.bid}}"
+                  value="{{this.bid}}"
+                />
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deletePopUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletePopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="donLabel">Delete Multiple Bills?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete <b id="count"></b> bills ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+       <button class="btn btn-danger" type="submit" form="dmb" > Yes </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectedBills(){
+  const billIds = document.getElementsByName("billIds");
+  let count = 0;
+  billIds.forEach((element) => {if(element.checked) count ++; });
+  if(billIds.length === count) document.querySelector("#all").checked  = true;
+  else document.querySelector("#all").checked  = false;
+  document.querySelector("#count").innerHTML = count;
+  if(count===0) document.querySelector("#deleteBtn").disabled = true;
+  else document.querySelector("#deleteBtn").disabled = false;
+  }
+
+  function selectAll(){
+    if(document.querySelector("#all").checked) document.getElementsByName("billIds").forEach((element) => element.checked = true);
+    else document.getElementsByName("billIds").forEach((element) => element.checked = false)
+    selectedBills();
+  }
+</script>

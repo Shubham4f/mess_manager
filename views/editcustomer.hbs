@@ -1,0 +1,146 @@
+{{#if error }}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
+{{/if}}
+
+<div class="card mx-auto mt-5" style="max-width: 600px;">
+  <h5 class="card-header d-flex justify-content-between">Edit Customer <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#instantBill"><i class="bi bi-receipt-cutoff"></i></button></h5>
+    <div class="card-body">
+      <form action="/editcustomer" method="post">
+        <div class="mb-3" style="display: none;">
+          <label for="cid" class="form-label">Customer Id : </label>
+          <input type="number" class="form-control" id="cid" name="cid" value="{{row.cid}}" required>
+        </div>
+        <div class="mb-3">
+          <label for="cname" class="form-label">Customer Name : </label>
+          <input type="text" class="form-control" id="cname" name="cname" value="{{row.cname}}" required>
+        </div>
+        <div class="mb-3">
+          <label for="pid" class="form-label">Select Price Category : </label>
+          <select class="form-select" name="pid" required>
+            {{#each rows1}}
+              <option {{#if this.selected}} selected {{/if}} value="{{this.pid}}">{{this.pname}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="grp" class="form-label">Group : </label>
+          <input type="number" class="form-control" id="grp" name="grp" value="{{row.grp}}" required>
+        </div>
+        <div style="display: flex;">
+            <button type="submit" class="btn btn-primary">Edit <i class="bi bi-pencil"></i></button>
+            <div class="ms-auto" style="width: fit-content;">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del">
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+            </div>
+        </div>
+      </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="del" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="delLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="delLabel">Delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete {{row.cname}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/deletecustomer/{{row.cid}}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mx-auto mt-5" style="max-width: 600px;">
+  <h5 class="card-header d-flex justify-content-between">Range On/Off - {{row.cname}}</h5>
+  <div class="card-body">
+  <form action="/rangeToggle/{{row.cid}}" method="post">
+  <div class="mb-3">
+          <label for="start" class="form-label">Select Start Date : </label>
+          <input type="date" class="form-control" id="start" name="sdate" onclick="dateClick()" required>
+  </div>
+  <div class="mb-3">
+          <label for="end" class="form-label">Select End Date : </label>
+          <input type="date" class="form-control" id="end" name="edate" onclick="dateClick()" required>
+  </div>
+   <div class="mb-3">
+          <label class="form-label">Breakfast : </label>
+          <div class="mb-3 d-flex">
+            <div style="margin: 0 30px 0 0;">
+              <label for="boff" class="form-label">OFF </label>
+              <input type="radio" class="form-check-input" id="boff" name="b" value="0" checked>
+            </div>
+            <div>
+              <label for="bon" class="form-label">ON </label>
+              <input type="radio" class="form-check-input" id="bon" name="b" value="1">
+            </div>
+          </div>
+  </div>
+   <div class="mb-3">
+          <label class="form-label">Lunch : </label>
+          <div class="mb-3 d-flex">
+            <div style="margin: 0 30px 0 0;">
+              <label for="loff" class="form-label">OFF </label>
+              <input type="radio" class="form-check-input" id="loff" name="l" value="0" checked>
+            </div>
+            <div>
+              <label for="lon" class="form-label">ON </label>
+              <input type="radio" class="form-check-input" id="lon" name="l" value="1">
+            </div>
+          </div>
+  </div>
+    <div class="mb-3">
+          <label class="form-label">Dinner : </label>
+          <div class="mb-3 d-flex">
+            <div style="margin: 0 30px 0 0;">
+              <label for="doff" class="form-label">OFF </label>
+              <input type="radio" class="form-check-input" id="doff" name="d" value="0" checked>
+            </div>
+            <div>
+              <label for="don" class="form-label">ON </label>
+              <input type="radio" class="form-check-input" id="don" name="d" value="1">
+            </div>
+      </div>
+  </div>
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary">
+  </div>
+  </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="instantBill" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ibLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ibLabel">Instant Bill</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to generate instant bill till now for {{row.cname}} ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/genrateBill/{{row.cid}}" class="btn btn-primary">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function dateClick(){
+    const start = document.querySelector("#start")
+    const end = document.querySelector("#end");
+    start.max = end.value;
+    end.min = start.value;
+  }
+</script>
